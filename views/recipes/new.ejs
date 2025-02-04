@@ -1,0 +1,30 @@
+<!-- views/recipes/new.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a Recipe</title>
+  </head>
+
+  <body>
+    <a href="/recipes/">Back to Recipes</a>
+    <h1>Create a New Recipe!</h1>
+    <form action="/recipes" method="POST">
+      <label for="name">Recipe Name:</label>
+      <input type="text" name="name" id="name" required />
+
+      <label for="ingredients">Ingredients:</label>
+      <input type="text" name="ingredients" id="ingredients" required />
+
+      <label for="instructions">Instructions:</label>
+      <textarea name="instructions" id="instructions" required></textarea>
+
+      <label for="isVegetarian">Vegetarian?</label>
+      <input type="checkbox" name="isVegetarian" id="isVegetarian" />
+
+      <button type="submit">Add Recipe</button>
+    </form>
+  </body>
+</html>
