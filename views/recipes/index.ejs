@@ -1,0 +1,22 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes Index</title>
+  </head>
+  <body>
+    <a href="/recipes/new">Add New Recipes Item</a>
+    <h1>All Recipes </h1>
+    <ul>
+        <% recipes.forEach(recipe => { %>
+          <li>
+            <a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a>
+          </li>
+        <% }); %>
+      </ul>
+
+  </body>
+</html>

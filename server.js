@@ -6,6 +6,7 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 
+
 const app = express();
 // MODELS
 const Recipe = require('./models/recipe');
@@ -33,16 +34,27 @@ app.get('/recipes/new', (req, res) => {
 });
 
 
+
+
 app.post('/recipes', async (req, res) => {
   try {
-    const newRecipe = await Recipe.create(req.body);
+   
+    const isVegetarian = req.body.isVegetarian === 'on'; 
+
+    const newRecipe = await Recipe.create({
+      ...req.body,
+      isVegetarian: isVegetarian, 
+    });
+
     console.log(newRecipe);
+    res.redirect('/recipes');
   } catch (err) {
     console.log('ERROR:', err);
+    res.status(500).send('Something went wrong. Please try again.');
   }
-  res.redirect('/recipes');
-  console.log(req.body);
 });
+
+
 
 // show recipes
 app.get('/recipes/:recipeId', async (req, res) => {
